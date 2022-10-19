@@ -6,7 +6,7 @@ import Logo from '../components/Logo';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         backgroundColor: '#f3f3f3',
     },
@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     },
     btn: {
         width: 300,
-        
+        borderWidth: 1,
+        borderColor: '#448aff'
     }
 });
 

@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
     logo: {
         width: 300,
         height: 100,
-        backgroundColor: 'gray',
     }
 });
 
