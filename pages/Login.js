@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {StyleSheet, View, Button, TextInput, Image} from 'react-native';
-
+import axios from 'axios';
 import Logo from '../components/Logo';
 
 const styles = StyleSheet.create({
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         width: 300,
         borderRadius: 2,
-        borderWidth: 0.7,
+        borderBottomWidth: 0.7,
         borderColor: '#d3d3d3',
     },
     btn: {
@@ -28,9 +28,29 @@ const styles = StyleSheet.create({
 });
 
 const Login = ({navigation}) => {
+    const [authData, setAuthData] = useState({});
 
-    const onSubmit = () => {
-        navigation.navigate('Dashboard');
+    useEffect(() => {
+        const authenticate = async () => {
+            const response = await axios.post('http://localhost/capp/login/authenticate',{
+                username: "mendev",
+                password: "admin123",
+            });
+    
+            if (response.status === 201) {
+                setAuthData(response.result);
+            }
+    
+            // navigation.navigate('Dashboard');
+        };
+
+        authenticate();
+    }, []);
+
+    const onSubmit = async () => {
+        console.log("response => ", response.result);
+
+        // navigation.navigate('Dashboard');
     };
 
     return (
